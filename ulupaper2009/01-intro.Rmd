@@ -1,6 +1,4 @@
-# intro
-
-## Definition.
+# Part2.1-Model
 
 $\theta:$
 
