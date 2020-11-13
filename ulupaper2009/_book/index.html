@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>A Minimal Book Example</title>
+  <title>My Notes on Ula&amp;Smith (2007) Paper</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="A Minimal Book Example" />
+  <meta property="og:title" content="My Notes on Ula&amp;Smith (2007) Paper" />
   <meta property="og:type" content="book" />
   
   
@@ -16,15 +16,15 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A Minimal Book Example" />
+  <meta name="twitter:title" content="My Notes on Ula&amp;Smith (2007) Paper" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
 
-<meta name="author" content="Yihui Xie" />
+<meta name="author" content="Peyman Kor" />
 
 
-<meta name="date" content="2020-10-14" />
+<meta name="date" content="2020-11-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 
-<link rel="next" href="intro.html"/>
+<link rel="next" href="model-implementation-ulu2009or-part2-1.html"/>
 <script src="libs/header-attrs-2.3.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -130,22 +130,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">My Notes on Ula&Smith (2007) Paper</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> intro</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Abstract</a></li>
+<li class="chapter" data-level="2" data-path="model-implementation-ulu2009or-part2-1.html"><a href="model-implementation-ulu2009or-part2-1.html"><i class="fa fa-check"></i><b>2</b> Model Implementation (<span class="citation">Ulu and Smith (<span>2009</span>)</span> - Part2.1 )</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#definition."><i class="fa fa-check"></i><b>2.1</b> Definition.</a></li>
+<li class="chapter" data-level="2.1" data-path="model-implementation-ulu2009or-part2-1.html"><a href="model-implementation-ulu2009or-part2-1.html#importing-the-required-library"><i class="fa fa-check"></i><b>2.1</b> Importing the required library</a></li>
+<li class="chapter" data-level="2.2" data-path="model-implementation-ulu2009or-part2-1.html"><a href="model-implementation-ulu2009or-part2-1.html#model-parameters-definition"><i class="fa fa-check"></i><b>2.2</b> Model parameters definition</a></li>
+<li class="chapter" data-level="2.3" data-path="model-implementation-ulu2009or-part2-1.html"><a href="model-implementation-ulu2009or-part2-1.html#part-2.1-example-of-ulu2009or"><i class="fa fa-check"></i><b>2.3</b> Part 2.1-Example of @<span class="citation">Ulu and Smith (<span>2009</span>)</span></a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="model-implementation-ulu2009or-part2-1.html"><a href="model-implementation-ulu2009or-part2-1.html#example-of-beta-distribution"><i class="fa fa-check"></i><b>2.3.1</b> Example of Beta Distribution:</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
-<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="2.4" data-path="model-implementation-ulu2009or-part2-1.html"><a href="model-implementation-ulu2009or-part2-1.html#beta-conjugate-to-bernoulli-distibutaion"><i class="fa fa-check"></i><b>2.4</b> Beta Conjugate to Bernoulli Distibutaion</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="model-implementation-ulu2009or-part2-1.html"><a href="model-implementation-ulu2009or-part2-1.html#prior"><i class="fa fa-check"></i><b>2.4.1</b> Prior:</a></li>
+<li class="chapter" data-level="2.4.2" data-path="model-implementation-ulu2009or-part2-1.html"><a href="model-implementation-ulu2009or-part2-1.html#posterior-distribution"><i class="fa fa-check"></i><b>2.4.2</b> Posterior Distribution:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="model-implementation-ulu2009or-part2-1.html"><a href="model-implementation-ulu2009or-part2-1.html#beta-binomial-model"><i class="fa fa-check"></i><b>2.5</b> Beta-Binomial Model</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="model-implementation-ulu2009or-part2-1.html"><a href="model-implementation-ulu2009or-part2-1.html#likelihood"><i class="fa fa-check"></i><b>2.5.1</b> Likelihood:</a></li>
+<li class="chapter" data-level="2.5.2" data-path="model-implementation-ulu2009or-part2-1.html"><a href="model-implementation-ulu2009or-part2-1.html#derive-posterior"><i class="fa fa-check"></i><b>2.5.2</b> Derive Posterior</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="model-implementation-ulu2009or-part2-1.html"><a href="model-implementation-ulu2009or-part2-1.html#example-of-the-ulu2009or"><i class="fa fa-check"></i><b>2.6</b> Example of the <span class="citation">Ulu and Smith (<span>2009</span>)</span>:</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="model-implementation-ulu2009or-part2-1.html"><a href="model-implementation-ulu2009or-part2-1.html#prior-1"><i class="fa fa-check"></i><b>2.6.1</b> Prior</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="model-implementation-ulu2009or-part2-1.html"><a href="model-implementation-ulu2009or-part2-1.html#normal-normal-conjugate"><i class="fa fa-check"></i><b>2.7</b> Normal-Normal Conjugate:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="literature.html"><a href="literature.html#to-do"><i class="fa fa-check"></i><b>3.1</b> To Do</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="methods.html"><a href="methods.html#to-do-1"><i class="fa fa-check"></i><b>4.1</b> To DO</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
-<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#to-do-2"><i class="fa fa-check"></i><b>5.1</b> To DO!</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="final-words.html"><a href="final-words.html#to-do-3"><i class="fa fa-check"></i><b>6.1</b> To Do!</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -159,7 +187,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">My Notes on Ula&amp;Smith (2007) Paper</a>
           </h1>
         </div>
 
@@ -168,19 +196,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">A Minimal Book Example</h1>
-<p class="author"><em>Yihui Xie</em></p>
-<p class="date"><em>2020-10-14</em></p>
+<h1 class="title">My Notes on Ula&amp;Smith (2007) Paper</h1>
+<p class="author"><em>Peyman Kor</em></p>
+<p class="date"><em>2020-11-13</em></p>
 </div>
-<div id="prerequisites" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Prerequisites</h1>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;bookdown&quot;</span>)</span>
-<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true"></a><span class="co"># or the development version</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3" aria-hidden="true"></a><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></span></code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.org/tinytex/" class="uri">https://yihui.org/tinytex/</a>.</p>
+<div id="abstract" class="section level1" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Abstract</h1>
+<p>Consumers or firms contemplating purchasing a new product or adopting a new technology are often plagued by uncertainty: Will the benefits outweigh the costs? Should we buy now or wait and gather more information? In this paper, we study a dynamic programming model of this technology adoption problem. In each period, the consumer decides whether to adopt the technology, reject it, or wait and gather additional information by observing a signal about the technology’s benefit. The technology’s actual benefit may be constant or changing stochastically over time. The dynamic programming state variable is a probability distribution that describes the consumer’s beliefs about the benefits of the technology. We allow general probability distributions on benefits and general signal processes and assume that the consumer updates her beliefs over time using Bayes’ rule. We are interested in structural properties of this model. We show that improving the technology’s benefit need not make the consumer better off and that first-order stochastic dominance improvements in the consumer’s distribution on benefits need not increase the consumer’s value function. Nevertheless, the model possesses a great deal of structure. For example, we obtain monotonic value functions and policies if we order distributions using
+likelihood-ratio dominance rather than first-order stochastic dominance. We also examine convexity properties and provide many comparative statics results.</p>
 
 </div>
             </section>
@@ -189,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="model-implementation-ulu2009or-part2-1.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

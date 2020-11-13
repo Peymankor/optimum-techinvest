@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.9.28)  14 OCT 2020 23:58
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.9.28)  8 NOV 2020 18:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -389,7 +389,8 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip59
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count297
-) (./ulupaper2009.aux)
+)
+No file ulupaper2009.aux.
 \openout1 = `ulupaper2009.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 121.
@@ -694,9 +695,11 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 121.
 LaTeX Info: Redefining \pageref on input line 121.
 LaTeX Info: Redefining \nameref on input line 121.
-(./ulupaper2009.out) (./ulupaper2009.out)
 \@outlinefile=\write4
 \openout4 = `ulupaper2009.out'.
+
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
 (Font)              scaled to size 12.0pt on input line 123.
@@ -735,24 +738,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ] [2
 
-] (./ulupaper2009.toc
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 6.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 6.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 6.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 6.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 6.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 6.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 6.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 6.
-)
+]
 \tf@toc=\write5
 \openout5 = `ulupaper2009.toc'.
 
@@ -760,57 +746,62 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 ]
 Chapter 1.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 131.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 131.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.00092pt on input line 131.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.00064pt on input line 131.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.00046pt on input line 131.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 9.99893pt on input line 131.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.99925pt on input line 131.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.99947pt on input line 131.
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 137.
 [5] [6
 
 ]
 Chapter 2.
-
-LaTeX Warning: Reference `intro' on page 7 undefined on input line 177.
-
-[7]
-File: ulupaper2009_files/figure-latex/nice-fig-1.pdf Graphic file (type pdf)
-<use ulupaper2009_files/figure-latex/nice-fig-1.pdf>
-[8] [9] [10
-
-]
+[7] [8]
 Chapter 3.
-[11] [12
+File: ulupaper2009_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type 
+pdf)
+<use ulupaper2009_files/figure-latex/unnamed-chunk-3-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[9
 
 ]
-Chapter 4.
-[13] [14
+File: ulupaper2009_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type 
+pdf)
+<use ulupaper2009_files/figure-latex/unnamed-chunk-4-1.pdf>
 
-]
-Chapter 5.
-[15] [16
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-]
-Chapter 6.
-(./ulupaper2009.bbl [17] [18
+[10]
 
-])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 274.
-[19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 274.
-(./ulupaper2009.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 274.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 274.
-Package rerunfilecheck Info: File `ulupaper2009.out' has not changed.
-(rerunfilecheck)             Checksum: 1D0933034F79D8784363EB0E32894624;815.
+! LaTeX Error: Bad math environment delimiter.
 
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 274.
- ) 
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.237 ...s out that the mean is exactly \(\alpha\(
+                                                  \alpha + \beta)\) Thus the...
+ 
 Here is how much of TeX's memory you used:
- 17420 strings out of 481673
- 305324 string characters out of 5932795
- 728282 words of memory out of 5000000
- 34307 multiletter control sequences out of 15000+600000
+ 17391 strings out of 481673
+ 305275 string characters out of 5932795
+ 724282 words of memory out of 5000000
+ 34289 multiletter control sequences out of 15000+600000
  541555 words of font info for 84 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 52i,8n,118p,906b,355s stack positions out of 5000i,500n,10000p,200000b,80000s
-
-Output written on ulupaper2009.pdf (19 pages).
+ 52i,6n,118p,906b,355s stack positions out of 5000i,500n,10000p,200000b,80000s
+Output written on ulupaper2009.pdf (10 pages).

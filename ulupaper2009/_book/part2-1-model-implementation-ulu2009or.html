@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Part2.1-Model Implementation (Ulu and Smith (2009)) | My Notes on Ula&amp;Smith (2007) Paper</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Part2.1-Model Implementation (Ulu and Smith (2009)) | My Notes on Ula&amp;Smith (2007) Paper" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Part2.1-Model Implementation (Ulu and Smith (2009)) | My Notes on Ula&amp;Smith (2007) Paper" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Peyman Kor" />
+
+
+<meta name="date" content="2020-11-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="literature.html"/>
+<script src="libs/header-attrs-2.3.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Abstract</a></li>
+<li class="chapter" data-level="2" data-path="part2-1-model-implementation-ulu2009or.html"><a href="part2-1-model-implementation-ulu2009or.html"><i class="fa fa-check"></i><b>2</b> Part2.1-Model Implementation (<span class="citation">Ulu and Smith (<span>2009</span>)</span>)</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="part2-1-model-implementation-ulu2009or.html"><a href="part2-1-model-implementation-ulu2009or.html#importing-the-required-library"><i class="fa fa-check"></i><b>2.1</b> Importing the required library</a></li>
+<li class="chapter" data-level="2.2" data-path="part2-1-model-implementation-ulu2009or.html"><a href="part2-1-model-implementation-ulu2009or.html#model-parameters-definition"><i class="fa fa-check"></i><b>2.2</b> Model parameters definition</a></li>
+<li class="chapter" data-level="2.3" data-path="part2-1-model-implementation-ulu2009or.html"><a href="part2-1-model-implementation-ulu2009or.html#part-2.1-example-of-ulu2009or"><i class="fa fa-check"></i><b>2.3</b> Part 2.1-Example of @<span class="citation">Ulu and Smith (<span>2009</span>)</span></a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="part2-1-model-implementation-ulu2009or.html"><a href="part2-1-model-implementation-ulu2009or.html#example-of-beta-distribution"><i class="fa fa-check"></i><b>2.3.1</b> Example of Beta Distribution:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="part2-1-model-implementation-ulu2009or.html"><a href="part2-1-model-implementation-ulu2009or.html#beta-conjugate-to-bernoulli-distibutaion"><i class="fa fa-check"></i><b>2.4</b> Beta Conjugate to Bernoulli Distibutaion</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="part2-1-model-implementation-ulu2009or.html"><a href="part2-1-model-implementation-ulu2009or.html#prior"><i class="fa fa-check"></i><b>2.4.1</b> Prior:</a></li>
+<li class="chapter" data-level="2.4.2" data-path="part2-1-model-implementation-ulu2009or.html"><a href="part2-1-model-implementation-ulu2009or.html#posterior-distribution"><i class="fa fa-check"></i><b>2.4.2</b> Posterior Distribution:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="part2-1-model-implementation-ulu2009or.html"><a href="part2-1-model-implementation-ulu2009or.html#beta-binomial-model"><i class="fa fa-check"></i><b>2.5</b> Beta-Binomial Model</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="part2-1-model-implementation-ulu2009or.html"><a href="part2-1-model-implementation-ulu2009or.html#likelihood"><i class="fa fa-check"></i><b>2.5.1</b> Likelihood:</a></li>
+<li class="chapter" data-level="2.5.2" data-path="part2-1-model-implementation-ulu2009or.html"><a href="part2-1-model-implementation-ulu2009or.html#derive-posterior"><i class="fa fa-check"></i><b>2.5.2</b> Derive Posterior</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="part2-1-model-implementation-ulu2009or.html"><a href="part2-1-model-implementation-ulu2009or.html#example-of-the-ulu2009or"><i class="fa fa-check"></i><b>2.6</b> Example of the <span class="citation">Ulu and Smith (<span>2009</span>)</span>:</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="part2-1-model-implementation-ulu2009or.html"><a href="part2-1-model-implementation-ulu2009or.html#prior-1"><i class="fa fa-check"></i><b>2.6.1</b> Prior</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="part2-1-model-implementation-ulu2009or.html"><a href="part2-1-model-implementation-ulu2009or.html#normal-normal-conjugate"><i class="fa fa-check"></i><b>2.7</b> Normal-Normal Conjugate:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="literature.html"><a href="literature.html#to-do"><i class="fa fa-check"></i><b>3.1</b> To Do</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="methods.html"><a href="methods.html#to-do-1"><i class="fa fa-check"></i><b>4.1</b> To DO</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#to-do-2"><i class="fa fa-check"></i><b>5.1</b> To DO!</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="final-words.html"><a href="final-words.html#to-do-3"><i class="fa fa-check"></i><b>6.1</b> To Do!</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">My Notes on Ula&amp;Smith (2007) Paper</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="part2.1-model-implementation-ulu2009or" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Part2.1-Model Implementation (<span class="citation">Ulu and Smith (<a href="#ref-ulu2009or" role="doc-biblioref">2009</a>)</span>)</h1>
+<div id="importing-the-required-library" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Importing the required library</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="part2-1-model-implementation-ulu2009or.html#cb1-1" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching packages ── tidyverse 1.3.0.9000 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
+## ✓ tibble  3.0.3     ✓ dplyr   1.0.1
+## ✓ tidyr   1.1.1     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<div id="model-parameters-definition" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Model parameters definition</h2>
+<p><span class="math inline">\(\theta:\)</span></p>
+<p>the Net Present Value of Stream of benefits</p>
+<ul>
+<li><p>If she decides to reject the technology, she receives nothing and no longer gathers information about the technology.</p></li>
+<li><p>If she decides to <em>adopt</em> the technology, she pays a fixed adoption cost K and receives a net expected benefit:</p></li>
+</ul>
+<p><span class="math display">\[\int_{\theta} \theta \pi(\theta)d\theta - K\]</span></p>
+<p><span class="math inline">\(\theta\)</span> has the density <span class="math inline">\(\pi\)</span>.</p>
+<ul>
+<li>Now, if consumer choose to gather additional information, she pays <em>c</em> <em>in that period</em> and observe the signal x, drawn with likelihood function</li>
+</ul>
+<p><span class="math display">\[L(x|\theta)\]</span></p>
+<p>Having observed signal x, the consumer then updates her prior <span class="math inline">\(\pi\)</span> using Baye’s rule:</p>
+<p><span class="math display">\[\prod(\theta;\pi,x) = \frac{L(x|\theta)\pi(\theta)}{f(x;\pi)} \]</span></p>
+<p>where the f(x;<span class="math inline">\(\pi\)</span>) is the predictive ditribution for signals x,</p>
+<p><span class="math display">\[f(x;\pi) =\int_{\theta} L(x|\theta)\pi(\theta)d\theta\]</span></p>
+<p>The consumer then continues into the next period, starting with a new prior distribution that is equal to her posterior distribution from this stage.</p>
+<p>Because our dynamic programming state variable is distribution itself , we will frequently supress the domain of the distribution and write the posterior as</p>
+<p>The consumer’s optimal value function with k periods remaining</p>
+<p><span class="math display">\[v^{*}_{0}(\pi) = 0\]</span>
+<span class="math display">\[v^{*}_{k}(\pi)=max(0,\int_{\theta}\theta\pi(\theta) \theta -K , -c + \delta E[v^{*}_{k-1}(\Pi(\pi,x))])\]</span></p>
+<p>where <span class="math inline">\(\delta\)</span> (0&lt;<span class="math inline">\(\delta\)</span>&lt;1) is the discount factor and the expectation of the next period value function is taken over all possible random signals.</p>
+<p><span class="math display">\[E[v^{*}_{k-1}(\Pi(\pi, \tilde{x})]=\int_{x}v_{k-1}{*}(\Pi(\pi,x))f(x;\pi)dx\]</span></p>
+</div>
+<div id="part-2.1-example-of-ulu2009or" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Part 2.1-Example of @<span class="citation">Ulu and Smith (<a href="#ref-ulu2009or" role="doc-biblioref">2009</a>)</span></h2>
+<p>The model for <span class="math inline">\(\theta\)</span> is defined as:</p>
+<p><span class="math display">\[\theta=Ap^*\]</span>
+Consumer’s uncertainty about <span class="math inline">\(p*\)</span> has a beta distribution</p>
+<p><span class="math display">\[f(p^*) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}(p^*)^{\alpha-1}(1-p^*)^{\beta-1}\]</span>
+### Discussion on Beta Distribiution:</p>
+<p>The pdf of the beta distribution, for 0&lt;<span class="math inline">\(p*\)</span>&lt;1, and shape parameters <span class="math inline">\(\alpha\)</span>,<span class="math inline">\(\beta\)</span>&gt;0, is a power function of the variable x and of its reflection (1-x) as follows:</p>
+<p><span class="math display">\[f(x|\alpha,\beta) = constant.x^{\alpha-1}(1-x)^{\beta-1}\]</span>
+<span class="math display">\[=\frac{x^{\alpha-1}(1-x)^{\beta-1}}{\int_{0}^{1}u^{\alpha-1}(1-u)^{\beta-1}du}\]</span>
+<span class="math display">\[=\frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}\]</span>
+<span class="math display">\[= \frac{1}{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1}\]</span>
+The beta function, B is a normalization constant to ensure that the total probability is 1.</p>
+<div id="example-of-beta-distribution" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Example of Beta Distribution:</h3>
+<p>Example:</p>
+<div id="equal-alpha-and-beta" class="section level4" number="2.3.1.1">
+<h4><span class="header-section-number">2.3.1.1</span> equal alpha and beta:</h4>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="part2-1-model-implementation-ulu2009or.html#cb5-1" aria-hidden="true"></a>p =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb5-2"><a href="part2-1-model-implementation-ulu2009or.html#cb5-2" aria-hidden="true"></a><span class="kw">plot</span>(p,<span class="kw">dbeta</span>(p,<span class="dv">100</span>,<span class="dv">100</span>),<span class="dt">ylab =</span> <span class="st">&quot;density&quot;</span>, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">col=</span><span class="dv">4</span>)</span>
+<span id="cb5-3"><a href="part2-1-model-implementation-ulu2009or.html#cb5-3" aria-hidden="true"></a><span class="kw">lines</span>(p,<span class="kw">dbeta</span>(p,<span class="dv">10</span>,<span class="dv">10</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col=</span><span class="dv">3</span>)</span>
+<span id="cb5-4"><a href="part2-1-model-implementation-ulu2009or.html#cb5-4" aria-hidden="true"></a><span class="kw">lines</span>(p,<span class="kw">dbeta</span>(p,<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col=</span><span class="dv">2</span>)</span>
+<span id="cb5-5"><a href="part2-1-model-implementation-ulu2009or.html#cb5-5" aria-hidden="true"></a><span class="kw">lines</span>(p,<span class="kw">dbeta</span>(p,<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col=</span><span class="dv">1</span>)</span>
+<span id="cb5-6"><a href="part2-1-model-implementation-ulu2009or.html#cb5-6" aria-hidden="true"></a><span class="kw">legend</span>(<span class="fl">0.7</span>,<span class="dv">8</span>, <span class="kw">c</span>(<span class="st">&quot;Be(100,100)&quot;</span>,<span class="st">&quot;Be(10,10)&quot;</span>,<span class="st">&quot;Be(2,2)&quot;</span>, <span class="st">&quot;Be(1,1)&quot;</span>),<span class="dt">col=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>), <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>) )</span></code></pre></div>
+<p><img src="ulupaper2009_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+#### non-equal alpha and beta:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="part2-1-model-implementation-ulu2009or.html#cb6-1" aria-hidden="true"></a>p =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="dt">length=</span><span class="dv">100</span>)</span>
+<span id="cb6-2"><a href="part2-1-model-implementation-ulu2009or.html#cb6-2" aria-hidden="true"></a><span class="kw">plot</span>(p, <span class="kw">dbeta</span>(p, <span class="dv">900</span>, <span class="dv">100</span>), <span class="dt">ylab=</span><span class="st">&quot;density&quot;</span>, <span class="dt">type =</span><span class="st">&quot;l&quot;</span>, <span class="dt">col=</span><span class="dv">4</span>)</span>
+<span id="cb6-3"><a href="part2-1-model-implementation-ulu2009or.html#cb6-3" aria-hidden="true"></a><span class="kw">lines</span>(p, <span class="kw">dbeta</span>(p, <span class="dv">90</span>, <span class="dv">10</span>), <span class="dt">type =</span><span class="st">&quot;l&quot;</span>, <span class="dt">col=</span><span class="dv">3</span>)</span>
+<span id="cb6-4"><a href="part2-1-model-implementation-ulu2009or.html#cb6-4" aria-hidden="true"></a><span class="kw">lines</span>(p, <span class="kw">dbeta</span>(p, <span class="dv">30</span>, <span class="dv">70</span>), <span class="dt">col=</span><span class="dv">2</span>) </span>
+<span id="cb6-5"><a href="part2-1-model-implementation-ulu2009or.html#cb6-5" aria-hidden="true"></a><span class="kw">lines</span>(p, <span class="kw">dbeta</span>(p, <span class="dv">3</span>, <span class="dv">7</span>), <span class="dt">col=</span><span class="dv">1</span>) </span>
+<span id="cb6-6"><a href="part2-1-model-implementation-ulu2009or.html#cb6-6" aria-hidden="true"></a><span class="kw">legend</span>(<span class="fl">0.2</span>,<span class="dv">30</span>, <span class="kw">c</span>(<span class="st">&quot;Be(900,100)&quot;</span>,<span class="st">&quot;Be(90,10)&quot;</span>,<span class="st">&quot;Be(30,70)&quot;</span>, <span class="st">&quot;Be(3,7)&quot;</span>),<span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">col=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>))</span></code></pre></div>
+<p><img src="ulupaper2009_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Two points about the <em>Beta</em> distribution:</p>
+<p>From these examples you should note the following:
+<span class="math display">\[E[p]=\frac{\alpha}{\alpha+\beta}\]</span>
+* It turns out that the mean is exactly Thus the mean of the distribution is determined by the relative values of a and b.</p>
+<ul>
+<li>The larger the values of a and b, the smaller the variance of the distribution about the mean.</li>
+</ul>
+<p><span class="math display">\[Var[p]=E[(X-\mu)^2]=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}\]</span></p>
+</div>
+<div id="alpha-and-beta-1" class="section level4" number="2.3.1.2">
+<h4><span class="header-section-number">2.3.1.2</span> alpha and beta &lt;1</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="part2-1-model-implementation-ulu2009or.html#cb7-1" aria-hidden="true"></a>p =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="dt">length=</span><span class="dv">100</span>)</span>
+<span id="cb7-2"><a href="part2-1-model-implementation-ulu2009or.html#cb7-2" aria-hidden="true"></a><span class="kw">plot</span>(p, <span class="kw">dbeta</span>(p, <span class="fl">0.9</span>, <span class="fl">0.1</span>), <span class="dt">ylab=</span><span class="st">&quot;density&quot;</span>, <span class="dt">type =</span><span class="st">&quot;l&quot;</span>, <span class="dt">col=</span><span class="dv">4</span>)</span>
+<span id="cb7-3"><a href="part2-1-model-implementation-ulu2009or.html#cb7-3" aria-hidden="true"></a><span class="kw">lines</span>(p, <span class="kw">dbeta</span>(p, <span class="fl">0.7</span>, <span class="fl">0.3</span>), <span class="dt">type =</span><span class="st">&quot;l&quot;</span>, <span class="dt">col=</span><span class="dv">3</span>)</span>
+<span id="cb7-4"><a href="part2-1-model-implementation-ulu2009or.html#cb7-4" aria-hidden="true"></a><span class="kw">lines</span>(p, <span class="kw">dbeta</span>(p, <span class="fl">0.5</span>, <span class="fl">0.7</span>), <span class="dt">col=</span><span class="dv">2</span>) </span>
+<span id="cb7-5"><a href="part2-1-model-implementation-ulu2009or.html#cb7-5" aria-hidden="true"></a><span class="kw">lines</span>(p, <span class="kw">dbeta</span>(p, <span class="fl">0.3</span>, <span class="fl">0.9</span>), <span class="dt">col=</span><span class="dv">1</span>) </span>
+<span id="cb7-6"><a href="part2-1-model-implementation-ulu2009or.html#cb7-6" aria-hidden="true"></a><span class="kw">legend</span>(<span class="fl">0.2</span>,<span class="dv">4</span>, <span class="kw">c</span>(<span class="st">&quot;Be(0.9,0.1)&quot;</span>,<span class="st">&quot;Be(0.7,0.3)&quot;</span>,<span class="st">&quot;Be(0.5,0.7)&quot;</span>, <span class="st">&quot;Be(0.3,0.9)&quot;</span>), <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>), <span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
+<p><img src="ulupaper2009_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="beta-conjugate-to-bernoulli-distibutaion" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Beta Conjugate to Bernoulli Distibutaion</h2>
+<div id="prior" class="section level3" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Prior:</h3>
+<p><span class="math display">\[Beta(\alpha,\beta) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)}\]</span></p>
+<p><span class="math display">\[= const.\theta^{\alpha-1}(1-\theta)^{b-1}\]</span></p>
+</div>
+<div id="posterior-distribution" class="section level3" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Posterior Distribution:</h3>
+<p><span class="math display">\[P(\theta|data)=\frac{P(data|\theta)P(\theta)}{P(data)}\propto P(data|\theta)P(theta)\]</span></p>
+</div>
+</div>
+<div id="beta-binomial-model" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Beta-Binomial Model</h2>
+<div id="likelihood" class="section level3" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Likelihood:</h3>
+<p><span class="math display">\[P(data|\theta) \propto \theta^z(1-\theta)^{n-z},\]</span>
+if we let z number of <span class="math inline">\(x_{i}\)</span> with value 1, i.e, (seeing z success in n trial)</p>
+<p><span class="math display">\[z=\sum_{i=1}^{n}X_i\]</span></p>
+</div>
+<div id="derive-posterior" class="section level3" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Derive Posterior</h3>
+<p><span class="math display">\[P(\theta|data) \propto ( \theta^z(1-\theta)^{n-z})(\theta^{\alpha-1}(1-\theta)^{\beta-1})\]</span><br />
+<span class="math display">\[\propto \theta^{z+\alpha-1}(1-\alpha)^{n-z+\beta-1}\]</span>
+Subsituing the following:</p>
+<p><span class="math display">\[\alpha&#39;=\alpha + z\]</span>
+<span class="math display">\[\beta&#39;=n+\beta-z\]</span>
+Now we have posterior:</p>
+<p><span class="math display">\[P(\theta | data) = \frac{\theta^{\alpha&#39;-1}(1-\alpha)^{\beta&#39;-1}}{B(\alpha&#39;,\beta&#39;)}\]</span></p>
+<p><span class="math display">\[=Beta(\alpha&#39;,\beta&#39;)\]</span></p>
+</div>
+</div>
+<div id="example-of-the-ulu2009or" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Example of the <span class="citation">Ulu and Smith (<a href="#ref-ulu2009or" role="doc-biblioref">2009</a>)</span>:</h2>
+<div id="prior-1" class="section level3" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> Prior</h3>
+<p>Beta with <span class="math inline">\(\alpha\)</span>=1, <span class="math inline">\(\beta\)</span>=1:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="part2-1-model-implementation-ulu2009or.html#cb8-1" aria-hidden="true"></a>N &lt;-<span class="st"> </span><span class="dv">1000</span></span>
+<span id="cb8-2"><a href="part2-1-model-implementation-ulu2009or.html#cb8-2" aria-hidden="true"></a>alpha &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb8-3"><a href="part2-1-model-implementation-ulu2009or.html#cb8-3" aria-hidden="true"></a>beta &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb8-4"><a href="part2-1-model-implementation-ulu2009or.html#cb8-4" aria-hidden="true"></a>nsuccess &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb8-5"><a href="part2-1-model-implementation-ulu2009or.html#cb8-5" aria-hidden="true"></a>n_trials &lt;-<span class="st"> </span><span class="dv">4</span></span>
+<span id="cb8-6"><a href="part2-1-model-implementation-ulu2009or.html#cb8-6" aria-hidden="true"></a></span>
+<span id="cb8-7"><a href="part2-1-model-implementation-ulu2009or.html#cb8-7" aria-hidden="true"></a>data_<span class="dv">1</span>_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">p_grid =</span> <span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">0</span>, <span class="dt">to =</span><span class="dv">1</span>, <span class="dt">length.out =</span> N)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb8-8"><a href="part2-1-model-implementation-ulu2009or.html#cb8-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prior=</span><span class="kw">dbeta</span>(p_grid,alpha,beta)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb8-9"><a href="part2-1-model-implementation-ulu2009or.html#cb8-9" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">likelihood =</span> <span class="kw">dbinom</span>(nsuccess, <span class="dt">size =</span> n_trials, <span class="dt">prob =</span> p_grid)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb8-10"><a href="part2-1-model-implementation-ulu2009or.html#cb8-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">posterior =</span> (likelihood <span class="op">*</span><span class="st"> </span>prior) <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(likelihood <span class="op">*</span><span class="st"> </span>prior))</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="part2-1-model-implementation-ulu2009or.html#cb9-1" aria-hidden="true"></a>data_<span class="dv">1</span>_<span class="dv">1</span> <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb9-2"><a href="part2-1-model-implementation-ulu2009or.html#cb9-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">gather</span>(key, value, <span class="op">-</span>p_grid) <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb9-3"><a href="part2-1-model-implementation-ulu2009or.html#cb9-3" aria-hidden="true"></a><span class="st">  </span><span class="co"># this line allows us to dictate the order the panels will appear in</span></span>
+<span id="cb9-4"><a href="part2-1-model-implementation-ulu2009or.html#cb9-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">key =</span> <span class="kw">factor</span>(key, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;prior&quot;</span>, <span class="st">&quot;likelihood&quot;</span>, <span class="st">&quot;posterior&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb9-5"><a href="part2-1-model-implementation-ulu2009or.html#cb9-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> p_grid, <span class="dt">ymin =</span> <span class="dv">0</span>, <span class="dt">ymax =</span> value, <span class="dt">fill =</span> key)) <span class="op">+</span></span>
+<span id="cb9-6"><a href="part2-1-model-implementation-ulu2009or.html#cb9-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_ribbon</span>() <span class="op">+</span></span>
+<span id="cb9-7"><a href="part2-1-model-implementation-ulu2009or.html#cb9-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;purple&quot;</span>)) <span class="op">+</span></span>
+<span id="cb9-8"><a href="part2-1-model-implementation-ulu2009or.html#cb9-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="ot">NULL</span>, <span class="dt">breaks =</span> <span class="ot">NULL</span>) <span class="op">+</span></span>
+<span id="cb9-9"><a href="part2-1-model-implementation-ulu2009or.html#cb9-9" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></span>
+<span id="cb9-10"><a href="part2-1-model-implementation-ulu2009or.html#cb9-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>key, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</span></code></pre></div>
+<p><img src="ulupaper2009_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Analytically, the mean of the posterior should be:</p>
+<p><span class="math display">\[Beta(\alpha + s, \beta + n -s)\]</span>
+with mean value of</p>
+<p><span class="math display">\[E[X]=\frac{\alpha + s}{\alpha + \beta + n}\]</span>
+having <span class="math inline">\(\alpha\)</span>=1, <span class="math inline">\(\beta=1\)</span>, <span class="math inline">\(s\)</span>=2 and <span class="math inline">\(n\)</span>=4 :</p>
+<p><span class="math display">\[Beta(1 + 2, 1+ 4-2)\]</span>
+<span class="math display">\[Beta(3, 3)\]</span>
+with mean value of</p>
+<p><span class="math display">\[E[pgrid]=\frac{3}{3+6}=\frac{1}{3}\]</span></p>
+</div>
+</div>
+<div id="normal-normal-conjugate" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Normal-Normal Conjugate:</h2>
+<p><span class="math display">\[P(\theta | Data) = \frac{P(Data|\theta)P(\theta)}{P(Data)} \propto P(Data|\theta)P(\theta)\]</span>
+<span class="math display">\[P(Data|\theta) = \prod_{i=1}^{N}\frac{1}{\sqrt{2\pi\sigma_x^2}}exp(-\frac{(x_i-\theta)²}{2\sigma_x^2})\]</span>
+<span class="math display">\[\propto exp(-\frac{\sum_{i=1}^{N}(x_i-\theta)^2}{2\sigma_x^2})\]</span>
+Now posterior:</p>
+<p><span class="math display">\[P(\theta|X) \propto  exp(-\frac{\sum_{i=1}^{N}(x_i-\theta)^2}{2\sigma_x^2})exp(-\frac{(\theta-\theta_0)^2}{2\sigma_{\theta}^2})\]</span>
+<span class="math display">\[=exp[-\]</span>
+You can label chapter and section titles using <code>{#label}</code> after them, e.g., we can reference Chapter <a href="#intro"><strong>??</strong></a>. If you do not manually label them, there will be automatic labels anyway, e.g., Chapter <a href="methods.html#methods">4</a>.</p>
+<p>Figures and tables with captions will be placed in <code>figure</code> and <code>table</code> environments, respectively.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="part2-1-model-implementation-ulu2009or.html#cb10-1" aria-hidden="true"></a><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">.1</span>, <span class="fl">.1</span>))</span>
+<span id="cb10-2"><a href="part2-1-model-implementation-ulu2009or.html#cb10-2" aria-hidden="true"></a><span class="kw">plot</span>(pressure, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:nice-fig"></span>
+<img src="ulupaper2009_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
+<p class="caption">
+Figure 2.1: Here is a nice figure!
+</p>
+</div>
+<p>Reference a figure by its code chunk label with the <code>fig:</code> prefix, e.g., see Figure <a href="part2-1-model-implementation-ulu2009or.html#fig:nice-fig">2.1</a>. Similarly, you can reference tables generated from <code>knitr::kable()</code>, e.g., see Table <a href="part2-1-model-implementation-ulu2009or.html#tab:nice-tab">2.1</a>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="part2-1-model-implementation-ulu2009or.html#cb11-1" aria-hidden="true"></a>knitr<span class="op">::</span><span class="kw">kable</span>(</span>
+<span id="cb11-2"><a href="part2-1-model-implementation-ulu2009or.html#cb11-2" aria-hidden="true"></a>  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
+<span id="cb11-3"><a href="part2-1-model-implementation-ulu2009or.html#cb11-3" aria-hidden="true"></a>  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></span>
+<span id="cb11-4"><a href="part2-1-model-implementation-ulu2009or.html#cb11-4" aria-hidden="true"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:nice-tab">Table 2.1: </span>Here is a nice table!</caption>
+<thead>
+<tr class="header">
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+<th align="left">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.7</td>
+<td align="right">3.2</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.6</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.0</td>
+<td align="right">3.6</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.7</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.6</td>
+<td align="right">3.4</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.0</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.4</td>
+<td align="right">2.9</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.4</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.8</td>
+<td align="right">3.4</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.8</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.3</td>
+<td align="right">3.0</td>
+<td align="right">1.1</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.8</td>
+<td align="right">4.0</td>
+<td align="right">1.2</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.7</td>
+<td align="right">4.4</td>
+<td align="right">1.5</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.3</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.7</td>
+<td align="right">3.8</td>
+<td align="right">1.7</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.1</td>
+<td align="right">3.8</td>
+<td align="right">1.5</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+</tbody>
+</table>
+<p>You can write citations, too. For example, we are using the <strong>bookdown</strong> package <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span> in this sample book, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">(<span class="citeproc-not-found" data-reference-id="xie2015"><strong>???</strong></span>)</span>. change new line</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-ulu2009or">
+<p>Ulu, Canan, and James E. Smith. 2009. “Uncertainty, Information Acquisition, and Technology Adoption.” <em>Operations Research</em> 57 (3): 740–52. <a href="https://doi.org/10.1287/opre.1080.0611">https://doi.org/10.1287/opre.1080.0611</a>.</p>
+</div>
+<div id="ref-R-bookdown">
+<p>Xie, Yihui. 2020. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ulupaper2009.pdf", "ulupaper2009.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
