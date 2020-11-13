@@ -3,7 +3,7 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">My Notes on Ula&Smith (2007) Paper</a></li>
+        <li><a href="./">My Notes on Ula&Smith (2009) Paper</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     download: ["pdf", "epub"]
