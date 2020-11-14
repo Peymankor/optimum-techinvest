@@ -1,5 +1,5 @@
 --- 
-title: "My Notes on Ula&Smith (2007) Paper "
+title: "My Notes on Ula&Smith (2009) Paper "
 author: "Peyman Kor"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site

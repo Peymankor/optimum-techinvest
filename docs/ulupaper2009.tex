@@ -36,8 +36,8 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={A Minimal Book Example},
-  pdfauthor={Yihui Xie},
+  pdftitle={My Notes on Ula\&Smith (2009) Paper},
+  pdfauthor={Peyman Kor},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
@@ -114,9 +114,9 @@
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 
-\title{A Minimal Book Example}
-\author{Yihui Xie}
-\date{2020-11-08}
+\title{My Notes on Ula\&Smith (2009) Paper}
+\author{Peyman Kor}
+\date{2020-11-13}
 
 \begin{document}
 \maketitle
@@ -125,27 +125,26 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{prerequisites}{%
-\chapter{Prerequisites}\label{prerequisites}}
+\hypertarget{abstract}{%
+\chapter{Abstract}\label{abstract}}
 
-This is a \emph{sample} book written in \textbf{Markdown}. You can use anything that Pandoc's Markdown supports, e.g., a math equation \(a^2 + b^2 = c^2\).
+Consumers or firms contemplating purchasing a new product or adopting a new technology are often plagued by uncertainty: Will the benefits outweigh the costs? Should we buy now or wait and gather more information? In this paper, we study a dynamic programming model of this technology adoption problem. In each period, the consumer decides whether to adopt the technology, reject it, or wait and gather additional information by observing a signal about the technology's benefit. The technology's actual benefit may be constant or changing stochastically over time. The dynamic programming state variable is a probability distribution that describes the consumer's beliefs about the benefits of the technology. We allow general probability distributions on benefits and general signal processes and assume that the consumer updates her beliefs over time using Bayes' rule. We are interested in structural properties of this model. We show that improving the technology's benefit need not make the consumer better off and that first-order stochastic dominance improvements in the consumer's distribution on benefits need not increase the consumer's value function. Nevertheless, the model possesses a great deal of structure. For example, we obtain monotonic value functions and policies if we order distributions using
+likelihood-ratio dominance rather than first-order stochastic dominance. We also examine convexity properties and provide many comparative statics results.
 
-The \textbf{bookdown} package can be installed from CRAN or Github:
+\hypertarget{model-implementation---part2.1}{%
+\chapter{Model Implementation ( - Part2.1 )}\label{model-implementation---part2.1}}
+
+\hypertarget{importing-the-required-library}{%
+\section{Importing the required library}\label{importing-the-required-library}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"bookdown"}\NormalTok{)}
-\CommentTok{\# or the development version}
-\CommentTok{\# devtools::install\_github("rstudio/bookdown")}
+\KeywordTok{library}\NormalTok{(tidyverse)}
 \end{Highlighting}
 \end{Shaded}
 
-Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading \texttt{\#}.
-
-To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): \url{https://yihui.org/tinytex/}.
-
-\hypertarget{part2.1-model}{%
-\chapter{Part2.1-Model}\label{part2.1-model}}
+\hypertarget{model-parameters-definition}{%
+\section{Model parameters definition}\label{model-parameters-definition}}
 
 \(\theta:\)
 
@@ -180,7 +179,7 @@ where the f(x;\(\pi\)) is the predictive ditribution for signals x,
 
 The consumer then continues into the next period, starting with a new prior distribution that is equal to her posterior distribution from this stage.
 
-Because our dynamic programming state variable is distibution itself , we will frequently supress the domain of the distribution and write the posterior as
+Because our dynamic programming state variable is distribution itself , we will frequently supress the domain of the distribution and write the posterior as
 
 The consumer's optimal value function with k periods remaining
 
@@ -191,16 +190,32 @@ where \(\delta\) (0\textless{}\(\delta\)\textless1) is the discount factor and t
 
 \[E[v^{*}_{k-1}(\Pi(\pi, \tilde{x})]=\int_{x}v_{k-1}{*}(\Pi(\pi,x))f(x;\pi)dx\]
 
-\hypertarget{part-2.2-example}{%
-\chapter{Part 2.2-Example}\label{part-2.2-example}}
+\hypertarget{part-2.1-example-of}{%
+\section{Part 2.1-Example of}\label{part-2.1-example-of}}
+
+The model for \(\theta\) is defined as:
 
 \[\theta=Ap^*\]
-\[f(p^*) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}(p^*)^{\alpha-1}(1-p^*)^{\beta-1}\]
+Consumer's uncertainty about \(p*\) has a beta distribution
 
-\hypertarget{beta-distribution}{%
-\section{Beta Distribution}\label{beta-distribution}}
+\[f(p^*) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}(p^*)^{\alpha-1}(1-p^*)^{\beta-1}\]
+\#\#\# Discussion on Beta Distribiution:
+
+The pdf of the beta distribution, for 0\textless{}\(p*\)\textless1, and shape parameters \(\alpha\),\(\beta\)\textgreater0, is a power function of the variable x and of its reflection (1-x) as follows:
+
+\[f(x|\alpha,\beta) = constant.x^{\alpha-1}(1-x)^{\beta-1}\]
+\[=\frac{x^{\alpha-1}(1-x)^{\beta-1}}{\int_{0}^{1}u^{\alpha-1}(1-u)^{\beta-1}du}\]
+\[=\frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}\]
+\[= \frac{1}{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1}\]
+The beta function, B is a normalization constant to ensure that the total probability is 1.
+
+\hypertarget{example-of-beta-distribution}{%
+\subsection{Example of Beta Distribution:}\label{example-of-beta-distribution}}
 
 Example:
+
+\hypertarget{equal-alpha-and-beta}{%
+\subsubsection{equal alpha and beta:}\label{equal-alpha-and-beta}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -213,7 +228,8 @@ Example:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ulupaper2009_files/figure-latex/unnamed-chunk-3-1.pdf}
+\includegraphics{ulupaper2009_files/figure-latex/unnamed-chunk-2-1.pdf}
+\#\#\#\# non-equal alpha and beta:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -226,19 +242,143 @@ Example:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ulupaper2009_files/figure-latex/unnamed-chunk-4-1.pdf}
+\includegraphics{ulupaper2009_files/figure-latex/unnamed-chunk-3-1.pdf}
 
 Two points about the \emph{Beta} distribution:
 
 From these examples you should note the following:
+\[E[p]=\frac{\alpha}{\alpha+\beta}\]
+* It turns out that the mean is exactly Thus the mean of the distribution is determined by the relative values of a and b.
 
 \begin{itemize}
-\item
-  It turns out that the mean is exactly \(\alpha\(\alpha + \beta)\) Thus the mean of the distribution is determined by the relative values of a and b.
+\tightlist
 \item
   The larger the values of a and b, the smaller the variance of the distribution about the mean.
 \end{itemize}
 
+\[Var[p]=E[(X-\mu)^2]=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}\]
+
+\hypertarget{alpha-and-beta-1}{%
+\subsubsection{alpha and beta \textless1}\label{alpha-and-beta-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p =}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{, }\DataTypeTok{length=}\DecValTok{100}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(p, }\KeywordTok{dbeta}\NormalTok{(p, }\FloatTok{0.9}\NormalTok{, }\FloatTok{0.1}\NormalTok{), }\DataTypeTok{ylab=}\StringTok{"density"}\NormalTok{, }\DataTypeTok{type =}\StringTok{"l"}\NormalTok{, }\DataTypeTok{col=}\DecValTok{4}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(p, }\KeywordTok{dbeta}\NormalTok{(p, }\FloatTok{0.7}\NormalTok{, }\FloatTok{0.3}\NormalTok{), }\DataTypeTok{type =}\StringTok{"l"}\NormalTok{, }\DataTypeTok{col=}\DecValTok{3}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(p, }\KeywordTok{dbeta}\NormalTok{(p, }\FloatTok{0.5}\NormalTok{, }\FloatTok{0.7}\NormalTok{), }\DataTypeTok{col=}\DecValTok{2}\NormalTok{) }
+\KeywordTok{lines}\NormalTok{(p, }\KeywordTok{dbeta}\NormalTok{(p, }\FloatTok{0.3}\NormalTok{, }\FloatTok{0.9}\NormalTok{), }\DataTypeTok{col=}\DecValTok{1}\NormalTok{) }
+\KeywordTok{legend}\NormalTok{(}\FloatTok{0.2}\NormalTok{,}\DecValTok{4}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\StringTok{"Be(0.9,0.1)"}\NormalTok{,}\StringTok{"Be(0.7,0.3)"}\NormalTok{,}\StringTok{"Be(0.5,0.7)"}\NormalTok{, }\StringTok{"Be(0.3,0.9)"}\NormalTok{), }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{), }\DataTypeTok{lty=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ulupaper2009_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\hypertarget{beta-conjugate-to-bernoulli-distibutaion}{%
+\section{Beta Conjugate to Bernoulli Distibutaion}\label{beta-conjugate-to-bernoulli-distibutaion}}
+
+\hypertarget{prior}{%
+\subsection{Prior:}\label{prior}}
+
+\[Beta(\alpha,\beta) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)}\]
+
+\[= const.\theta^{\alpha-1}(1-\theta)^{b-1}\]
+
+\hypertarget{posterior-distribution}{%
+\subsection{Posterior Distribution:}\label{posterior-distribution}}
+
+\[P(\theta|data)=\frac{P(data|\theta)P(\theta)}{P(data)}\propto P(data|\theta)P(theta)\]
+
+\hypertarget{beta-binomial-model}{%
+\section{Beta-Binomial Model}\label{beta-binomial-model}}
+
+\hypertarget{likelihood}{%
+\subsection{Likelihood:}\label{likelihood}}
+
+\[P(data|\theta) \propto \theta^z(1-\theta)^{n-z},\]
+if we let z number of \(x_{i}\) with value 1, i.e, (seeing z success in n trial)
+
+\[z=\sum_{i=1}^{n}X_i\]
+
+\hypertarget{derive-posterior}{%
+\subsection{Derive Posterior}\label{derive-posterior}}
+
+\[P(\theta|data) \propto ( \theta^z(1-\theta)^{n-z})(\theta^{\alpha-1}(1-\theta)^{\beta-1})\]\\
+\[\propto \theta^{z+\alpha-1}(1-\alpha)^{n-z+\beta-1}\]
+Subsituing the following:
+
+\[\alpha'=\alpha + z\]
+\[\beta'=n+\beta-z\]
+Now we have posterior:
+
+\[P(\theta | data) = \frac{\theta^{\alpha'-1}(1-\alpha)^{\beta'-1}}{B(\alpha',\beta')}\]
+
+\[=Beta(\alpha',\beta')\]
+
+\hypertarget{example-of-the}{%
+\section{Example of the:}\label{example-of-the}}
+
+\hypertarget{prior-1}{%
+\subsection{Prior}\label{prior-1}}
+
+Beta with \(\alpha\)=1, \(\beta\)=1:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{N \textless{}{-}}\StringTok{ }\DecValTok{1000}
+\NormalTok{alpha \textless{}{-}}\StringTok{ }\DecValTok{1}
+\NormalTok{beta \textless{}{-}}\StringTok{ }\DecValTok{1}
+\NormalTok{nsuccess \textless{}{-}}\StringTok{ }\DecValTok{2}
+\NormalTok{n\_trials \textless{}{-}}\StringTok{ }\DecValTok{4}
+
+\NormalTok{data\_}\DecValTok{1}\NormalTok{\_}\DecValTok{1}\NormalTok{ \textless{}{-}}\StringTok{ }\KeywordTok{tibble}\NormalTok{(}\DataTypeTok{p\_grid =} \KeywordTok{seq}\NormalTok{(}\DataTypeTok{from=}\DecValTok{0}\NormalTok{, }\DataTypeTok{to =}\DecValTok{1}\NormalTok{, }\DataTypeTok{length.out =}\NormalTok{ N)) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{prior=}\KeywordTok{dbeta}\NormalTok{(p\_grid,alpha,beta)) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{likelihood =} \KeywordTok{dbinom}\NormalTok{(nsuccess, }\DataTypeTok{size =}\NormalTok{ n\_trials, }\DataTypeTok{prob =}\NormalTok{ p\_grid)) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{posterior =}\NormalTok{ (likelihood }\OperatorTok{*}\StringTok{ }\NormalTok{prior) }\OperatorTok{/}\StringTok{ }\KeywordTok{sum}\NormalTok{(likelihood }\OperatorTok{*}\StringTok{ }\NormalTok{prior))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_}\DecValTok{1}\NormalTok{\_}\DecValTok{1} \OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{gather}\NormalTok{(key, value, }\OperatorTok{{-}}\NormalTok{p\_grid) }\OperatorTok{\%\textgreater{}\%}\StringTok{  }
+\StringTok{  }\CommentTok{\# this line allows us to dictate the order the panels will appear in}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{key =} \KeywordTok{factor}\NormalTok{(key, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"prior"}\NormalTok{, }\StringTok{"likelihood"}\NormalTok{, }\StringTok{"posterior"}\NormalTok{))) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ p\_grid, }\DataTypeTok{ymin =} \DecValTok{0}\NormalTok{, }\DataTypeTok{ymax =}\NormalTok{ value, }\DataTypeTok{fill =}\NormalTok{ key)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom\_ribbon}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale\_fill\_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"red"}\NormalTok{, }\StringTok{"purple"}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale\_y\_continuous}\NormalTok{(}\OtherTok{NULL}\NormalTok{, }\DataTypeTok{breaks =} \OtherTok{NULL}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{facet\_wrap}\NormalTok{(}\OperatorTok{\textasciitilde{}}\NormalTok{key, }\DataTypeTok{scales =} \StringTok{"free"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ulupaper2009_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+Analytically, the mean of the posterior should be:
+
+\[Beta(\alpha + s, \beta + n -s)\]
+with mean value of
+
+\[E[X]=\frac{\alpha + s}{\alpha + \beta + n}\]
+having \(\alpha\)=1, \(\beta=1\), \(s\)=2 and \(n\)=4 :
+
+\[Beta(1 + 2, 1+ 4-2)\]
+\[Beta(3, 3)\]
+with mean value of
+
+\[E[pgrid]=\frac{3}{3+6}=\frac{1}{3}\]
+
+\hypertarget{normal-normal-conjugate}{%
+\section{Normal-Normal Conjugate:}\label{normal-normal-conjugate}}
+
+\[P(\theta | Data) = \frac{P(Data|\theta)P(\theta)}{P(Data)} \propto P(Data|\theta)P(\theta)\]
+\[P(Data|\theta) = \prod_{i=1}^{N}\frac{1}{\sqrt{2\pi\sigma_x^2}}exp(-\frac{(x_i-\theta)²}{2\sigma_x^2})\]
+\[\propto exp(-\frac{\sum_{i=1}^{N}(x_i-\theta)^2}{2\sigma_x^2})\]
+Now posterior:
+
+\[P(\theta|X) \propto  exp(-\frac{\sum_{i=1}^{N}(x_i-\theta)^2}{2\sigma_x^2})exp(-\frac{(\theta-\theta_0)^2}{2\sigma_{\theta}^2})\]
+\[=exp[-\]
 You can label chapter and section titles using \texttt{\{\#label\}} after them, e.g., we can reference Chapter \ref{intro}. If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \ref{methods}.
 
 Figures and tables with captions will be placed in \texttt{figure} and \texttt{table} environments, respectively.
@@ -310,29 +450,27 @@ You can write citations, too. For example, we are using the \textbf{bookdown} pa
 \hypertarget{literature}{%
 \chapter{Literature}\label{literature}}
 
-Here is a review of existing methods.
+\hypertarget{to-do}{%
+\section{To Do}\label{to-do}}
 
 \hypertarget{methods}{%
 \chapter{Methods}\label{methods}}
 
-We describe our methods in this chapter.
+\hypertarget{to-do-1}{%
+\section{To DO}\label{to-do-1}}
 
 \hypertarget{applications}{%
 \chapter{Applications}\label{applications}}
 
-Some \emph{significant} applications are demonstrated in this chapter.
-
-\hypertarget{example-one}{%
-\section{Example one}\label{example-one}}
-
-\hypertarget{example-two}{%
-\section{Example two}\label{example-two}}
+\hypertarget{to-do-2}{%
+\section{To DO!}\label{to-do-2}}
 
 \hypertarget{final-words}{%
 \chapter{Final Words}\label{final-words}}
 
-We have finished a nice book.
+\hypertarget{to-do-3}{%
+\section{To Do!}\label{to-do-3}}
 
-  \bibliography{book.bib,packages.bib}
+  \bibliography{Phd-Literature.bib,packages.bib}
 
 \end{document}
