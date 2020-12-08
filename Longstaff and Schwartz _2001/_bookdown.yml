@@ -1,0 +1,5 @@
+book_filename: "Longstaff and Schwartz _2001"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Chapter "
