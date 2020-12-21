@@ -1,6 +1,6 @@
 # abstract {#abs}
 
-
+The key is to **use of least squares to estimate the conditional expected payoff to the optionholder from continuation**
 
 
 
